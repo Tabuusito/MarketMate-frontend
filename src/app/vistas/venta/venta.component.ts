@@ -123,7 +123,7 @@ ngAfterViewInit() {
   abrirModalEditarDetalle(detalle: detallesVentaI) {
     const dialogRef = this.dialog.open(EditarDetalleComponent, {
       width: '500px',
-      height: '250px',
+      height: '280px',
       data: { detalle: detalle }
     });
 
