@@ -1,0 +1,24 @@
+<mat-dialog-content>
+    <form (ngSubmit)="guardarCambios()">
+        <div class="mb-3">
+            <label for="nombreProducto" class="form-label">Nombre del Producto</label>
+            <input type="text" class="form-control" id="nombreProducto" [(ngModel)]="detalle.producto.nombre" name="nombreProducto" readonly>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="cantidadProducto" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="cantidadProducto" [(ngModel)]="detalle.cantidad" name="cantidadProducto">
+            </div>
+            <div class="col">
+                <label for="precioProducto" class="form-label">Precio Unitario</label>
+                <input type="number" class="form-control" id="precioProducto" [(ngModel)]="detalle.precioUnitario" name="precioProducto">
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-warning flex-grow-1 mx-1" (click)="dialogRef.close()">Cancelar</button>
+            <button type="submit" class="btn btn-success flex-grow-1 me-1">Guardar Cambios</button>
+        </div>
+    </form>
+</mat-dialog-content>
