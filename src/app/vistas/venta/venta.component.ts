@@ -135,6 +135,7 @@ ngAfterViewInit() {
           this.venta.detalles[index] = result;
         }
       }
+      this.actualizarTotal();
     });
   }
   
