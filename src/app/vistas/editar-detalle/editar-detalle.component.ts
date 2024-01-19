@@ -2,10 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Para formularios
-import { MatFormFieldModule } from '@angular/material/form-field'; // Para campos de formulario
-import { MatInputModule } from '@angular/material/input'; // Para inputs de Material
-import { MatButtonModule } from '@angular/material/button'; // Para botones de Material
-import { MatIconModule } from '@angular/material/icon'; // Si necesitas íconos
 import { detallesVentaI } from '../../modelos/detallesVenta.interface';
 
 
@@ -15,11 +11,8 @@ import { detallesVentaI } from '../../modelos/detallesVenta.interface';
   imports: [FormsModule,
             ReactiveFormsModule,
             CommonModule,
-            MatDialogModule,
-            MatFormFieldModule,
-            MatInputModule,
-            MatButtonModule,
-            MatIconModule],
+            MatDialogModule
+           ],
   templateUrl: './editar-detalle.component.html',
   styleUrl: './editar-detalle.component.css'
 })

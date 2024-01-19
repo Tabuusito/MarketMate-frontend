@@ -1,5 +1,4 @@
 import { Component, ElementRef, ViewChild, AfterViewInit  } from '@angular/core';
-import { Router } from '@angular/router'
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -26,7 +25,6 @@ export class VentaComponent implements AfterViewInit {
 
   constructor(private inventarioService: InventarioService, 
               private ventaService: VentaService,
-              private router: Router,
               public dialog: MatDialog ) {
     this.venta = {
         id: 0,
@@ -37,9 +35,9 @@ export class VentaComponent implements AfterViewInit {
 }
 
 
-ngAfterViewInit() {
-  this.searchInputElement.nativeElement.focus();
-}
+  ngAfterViewInit() {
+    this.searchInputElement.nativeElement.focus();
+  }
 
   search(): void {
     this.inventarioService.getByRef(this.busqueda).pipe(
@@ -52,7 +50,6 @@ ngAfterViewInit() {
             return throwError(error);
         })
     ).subscribe(data => {
-        // Buscar si ya existe un detalle con este producto
         const detalleExistente = this.venta.detalles.find(detalle => detalle.producto.id === data.id);
 
         if (detalleExistente) {
@@ -106,8 +103,6 @@ ngAfterViewInit() {
             total: 0
         };
         this.busqueda = '';
-  
-        //alert('Venta registrada con éxito.');
   
       }, error => {
         alert('Error inesperado, por favor, inténtalo de nuevo.')

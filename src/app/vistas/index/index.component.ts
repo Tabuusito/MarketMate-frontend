@@ -19,4 +19,8 @@ export class IndexComponent {
   redirectVentas(){
     this.router.navigate(['venta']);
   }
+
+  redirectFechaVentas(){
+    this.router.navigate(['fechaVentas']);
+  }
 }
