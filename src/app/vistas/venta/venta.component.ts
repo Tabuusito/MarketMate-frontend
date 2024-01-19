@@ -92,6 +92,7 @@ export class VentaComponent implements AfterViewInit {
 
   private guardarVenta(): void {
     if(this.venta.detalles.length > 0){
+      this.venta.fechaHora = new Date;
       this.ventaService.crearVenta(this.venta).subscribe(response => {
         console.log('Venta guardada', response);
         

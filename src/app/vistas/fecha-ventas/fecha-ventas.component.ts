@@ -8,9 +8,9 @@ import { MatNativeDateModule } from '@angular/material/core';
   selector: 'app-fecha-ventas',
   standalone: true,
   imports: [MatDatepickerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatNativeDateModule],
+            MatFormFieldModule,
+            MatInputModule,
+            MatNativeDateModule],
   templateUrl: './fecha-ventas.component.html',
   styleUrl: './fecha-ventas.component.css'
 })
