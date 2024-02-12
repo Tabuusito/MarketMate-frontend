@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <mat-form-field appearance="fill">
+        <mat-label>Selecciona una fecha</mat-label>
+        <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event.value)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="row justify-content-center" *ngIf="ventas.length > 0">
+        <div class="col-lg-8 col-md-10">
+            <div class="d-flex justify-content-between align-items-center alert alert-info" role="alert">
+                <strong>Total del día: {{ totalVentas | currency:'EUR' }}</strong>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-center" *ngFor="let venta of ventas; let i = index">
+        <div class="col-lg-8 col-md-10">
+            <h3><strong>Venta nº {{ venta.id }} - {{ venta.fechaHora | date: 'dd/MM/yyyy' }} a las {{ venta.fechaHora | date: 'HH:mm:ss' }}</strong></h3>
+        </div>
+
+        <div class="col-lg-8 col-md-10">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let detalle of venta.detalles">
+                        <td>{{ detalle.producto.nombre }}</td>
+                        <td>{{ detalle.cantidad }}</td>
+                        <td>{{ detalle.precioUnitario }}</td>
+                        <td>{{ detalle.cantidad * detalle.precioUnitario }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="alert alert-secondary">
+                <strong>Total: {{ venta.total | currency:'EUR' }}</strong>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>

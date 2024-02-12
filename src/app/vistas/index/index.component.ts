@@ -23,4 +23,8 @@ export class IndexComponent {
   redirectFechaVentas(){
     this.router.navigate(['fechaVentas']);
   }
+
+  redirectCajasMes(){
+    this.router.navigate(['cajasMes']);
+  }
 }
