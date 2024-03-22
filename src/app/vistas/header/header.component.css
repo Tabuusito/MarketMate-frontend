@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .sticky-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #333;
+    padding: 10px 0;
+    color: white;
+    text-align: center;
+    z-index: 1000;
+  }
+  .sticky-header a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+  }
+  .content {
+    margin-top: 60px; /* Espacio para el header fijo */
+    padding: 15px;
+  }

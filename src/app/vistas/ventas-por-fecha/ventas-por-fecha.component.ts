@@ -6,6 +6,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-ventas-por-fecha',
@@ -14,7 +16,9 @@ import { MatNativeDateModule } from '@angular/material/core';
             MatDatepickerModule,
             MatFormFieldModule,
             MatInputModule,
-            MatNativeDateModule],
+            MatNativeDateModule,
+            HeaderComponent,
+            RouterOutlet],
   templateUrl: './ventas-por-fecha.component.html',
   styleUrls: ['./ventas-por-fecha.component.css']
 })

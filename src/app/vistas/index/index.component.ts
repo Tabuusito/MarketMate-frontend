@@ -27,4 +27,8 @@ export class IndexComponent {
   redirectCajasMes(){
     this.router.navigate(['cajasMes']);
   }
+
+  redirectGraficos(){
+    this.router.navigate(['graficos']);
+  }
 }

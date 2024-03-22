@@ -9,11 +9,13 @@ import { VentaService } from '../../servicios/venta.service';
 import { VentasI } from '../../modelos/ventas.interface';
 import { detallesVentaI } from '../../modelos/detallesVenta.interface';
 import { EditarDetalleComponent } from '../editar-detalle/editar-detalle.component';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-venta',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HeaderComponent, RouterOutlet],
   templateUrl: './venta.component.html',
   styleUrl: './venta.component.css'
 })

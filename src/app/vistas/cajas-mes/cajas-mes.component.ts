@@ -4,6 +4,8 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { HeaderComponent } from '../header/header.component';
+import { RouterOutlet } from '@angular/router';
 import { CajasI } from '../../modelos/cajas.interface';
 import { CajaService } from '../../servicios/caja.service';
 
@@ -15,7 +17,9 @@ import { CajaService } from '../../servicios/caja.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    HeaderComponent,
+    RouterOutlet
   ],
   templateUrl: './cajas-mes.component.html',
   styleUrls: ['./cajas-mes.component.css']

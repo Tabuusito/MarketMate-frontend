@@ -2,14 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router'
+import { RouterOutlet } from '@angular/router';
 
 import { InventarioService } from '../../servicios/inventario.service';
 import { ProductosI } from '../../modelos/productos.interface';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-inventario',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HeaderComponent, RouterOutlet],
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css']
 })
