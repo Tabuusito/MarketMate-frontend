@@ -3,11 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ProductosI } from '../../modelos/productos.interface';
 import { InventarioService } from '../../servicios/inventario.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-editar-producto',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './editar-producto.component.html',
   styleUrl: './editar-producto.component.css'
 })
@@ -19,7 +20,8 @@ export class EditarProductoComponent implements OnInit{
     cantidad: 0,
     precio: 0,
     familia: 'papeleria',
-    id: 0
+    id: 0,
+    imagen: ''
   }
 
   constructor(private route: ActivatedRoute,
@@ -89,4 +91,31 @@ export class EditarProductoComponent implements OnInit{
            producto.precio >= 0 &&
            producto.familia.trim() !== '';
   }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input && input.files && input.files.length) {
+        const file: File = input.files[0];
+        if (file.type === 'image/jpeg' || file.type === 'image/png') {
+            this.service.updateProductImage(this.producto.id, file).subscribe(
+                response => {
+                    console.log('Imagen actualizada con éxito', response);
+                    this.producto.imagen = response.imagen + `?timestamp=${new Date().getTime()}`; // Agregamos timestamp para evitar el cache del navegador
+                },
+                error => {
+                    console.error('Error al actualizar la imagen', error);
+                    alert('Error al actualizar la imagen. Por favor, inténtalo de nuevo.');
+                }
+            );
+        } else {
+            alert('El archivo proporcionado no es válido. Por favor, selecciona un archivo de imagen en formato JPG, JPEG o PNG.');
+        }
+    } else {
+        console.log('No se ha seleccionado ningún archivo');
+    }
+}
+
+
+  
+  
 }

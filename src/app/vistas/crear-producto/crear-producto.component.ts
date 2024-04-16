@@ -19,7 +19,8 @@ export class CrearProductoComponent {
     cantidad: 0,
     precio: 0,
     familia: '',
-    id: 0
+    id: 0,
+    imagen:''
   }
 
   constructor(private router: Router, private service: InventarioService) {}

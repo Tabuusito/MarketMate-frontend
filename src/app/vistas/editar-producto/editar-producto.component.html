@@ -1,13 +1,25 @@
 <div class="container mt-4">
     <h2>Editar Producto</h2>
     <form (ngSubmit)="editProduct()">
-        <div class="mb-3">
-            <label for="nombreProducto" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombreProducto" [(ngModel)]="producto.nombre" name="nombre">
-        </div>
-        <div class="mb-3">
-            <label for="referenciaProducto" class="form-label">Referencia</label>
-            <input type="text" class="form-control" id="referenciaProducto" [(ngModel)]="producto.referencia" name="referencia">
+        <div class="row mb-3">
+            <div class="col-4">
+                <label for="imagenProducto" class="form-label">Modificar imagen del Producto</label>
+                <input type="file" class="form-control" id="imagenProducto" accept="image/jpeg, image/png" (change)="onFileSelected($event)" name="imagen">
+
+                
+                <img [src]="'http://localhost:8080/uploads/' + producto.imagen" class="img-fluid mt-2" alt="Imagen del Producto" *ngIf="producto.imagen">
+
+            </div>
+            <div class="col-8">
+                <div class="mb-3">
+                    <label for="nombreProducto" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombreProducto" [(ngModel)]="producto.nombre" name="nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="referenciaProducto" class="form-label">Referencia</label>
+                    <input type="text" class="form-control" id="referenciaProducto" [(ngModel)]="producto.referencia" name="referencia">
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col">

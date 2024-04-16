@@ -5,5 +5,6 @@ export interface ProductosI{
     cantidad:number;
     precio:number;
     familia:string;
+    imagen:string
 
 }

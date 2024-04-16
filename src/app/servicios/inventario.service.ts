@@ -40,4 +40,13 @@ export class InventarioService {
   createProduct(productData: ProductosI){
     return this.http.post<ProductosI>(this.url, productData);
   }
+
+  updateProductImage(id: number, file: File) {
+    let direccion = `${this.url}${id}/imagen`;
+    console.log(direccion);
+    let formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+
+    return this.http.post<any>(direccion, formData);
+  }
 }
