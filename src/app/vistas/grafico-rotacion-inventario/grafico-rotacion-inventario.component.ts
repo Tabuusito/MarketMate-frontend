@@ -56,36 +56,42 @@ export class GraficoRotacionInventarioComponent {
 
   generateChart(): void {
     if (!this.busquedaProducto || !this.selectedYear || !this.selectedMonth) {
-        alert('Por favor, complete la búsqueda de producto, año y mes.');
-        return;
+      alert('Por favor, complete la búsqueda de producto, año y mes.');
+      return;
     }
-
+  
+    // Destruir el gráfico existente si ya existe
+    if (this.grafico) {
+      this.grafico.destroy();
+    }
+  
     this.inventarioService.getByRef(this.busquedaProducto).subscribe(producto => {
-        this.producto = producto;
-
-        this.ventaService.buscarPorMes(this.selectedYear, this.selectedMonth).subscribe(ventas => {
-            let ventasFiltradas: VentasI[] = ventas.filter(venta => 
-                venta.detalles.some(detalle => detalle.producto.referencia === this.busquedaProducto)
-            );
-
-            let datosGrafico = this.calcularRotacionInventario(ventasFiltradas, this.producto);
-
-            this.grafico = new Chart('grafico', {
-              type: 'line',
-              data: {
-                labels: datosGrafico.dias, // Días del mes
-                datasets: [{
-                  label: 'Rotación de Inventario',
-                  data: datosGrafico.valoresRotacion, // Valores calculados de rotación
-                  backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                  borderColor: 'rgba(54, 162, 235, 1)',
-                  borderWidth: 1
-                }]
-              }
-            });
+      this.producto = producto;
+  
+      this.ventaService.buscarPorMes(this.selectedYear, this.selectedMonth).subscribe(ventas => {
+        let ventasFiltradas: VentasI[] = ventas.filter(venta => 
+          venta.detalles.some(detalle => detalle.producto.referencia === this.busquedaProducto)
+        );
+  
+        let datosGrafico = this.calcularRotacionInventario(ventasFiltradas, this.producto);
+  
+        this.grafico = new Chart('grafico', {
+          type: 'line',
+          data: {
+            labels: datosGrafico.dias, // Días del mes
+            datasets: [{
+              label: 'Rotación de Inventario',
+              data: datosGrafico.valoresRotacion, // Valores calculados de rotación
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1
+            }]
+          }
         });
+      });
     });
   }
+  
 
   private calcularRotacionInventario(ventas: VentasI[], productoBuscado: ProductosI): { dias: string[], valoresRotacion: number[] } {
     let dias: string[] = [];

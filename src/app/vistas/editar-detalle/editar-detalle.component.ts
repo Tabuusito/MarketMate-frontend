@@ -33,7 +33,7 @@ export class EditarDetalleComponent {
       this.mensajeError = 'La cantidad debe ser mayor que 0.';
       return;
     }
-    if (this.detalle.precioUnitario < 0) {
+    if (this.detalle.precioUnitario < 0 || this.detalle.precioUnitario === null) {
       this.mensajeError = 'El precio debe ser mayor o igual a 0.';
       return;
     }

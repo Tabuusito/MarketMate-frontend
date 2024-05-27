@@ -89,6 +89,7 @@ export class EditarProductoComponent implements OnInit{
            producto.referencia.trim() !== '' &&
            producto.cantidad != null &&
            producto.precio >= 0 &&
+           producto.precio != null &&
            producto.familia.trim() !== '';
   }
 
