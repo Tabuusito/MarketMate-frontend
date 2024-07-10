@@ -9,7 +9,7 @@ import { mergeMap, reduce, catchError } from 'rxjs/operators';
 })
 export class VentaService {
 
-  url:string = 'http://localhost:8080/ventas/';
+  url:string = 'http://host.docker.internal:8080/ventas/';
 
   constructor(private http:HttpClient) { }
 

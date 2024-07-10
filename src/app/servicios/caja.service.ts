@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CajaService {
-  url: string = 'http://localhost:8080/cajas';
+  url: string = 'http://host.docker.internal:8080/cajas';
 
   constructor(private http: HttpClient) { }
 

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class InventarioService {
 
-  url:string = 'http://localhost:8080/inventario/';
+  url:string = 'http://host.docker.internal:8080/inventario/';
 
   constructor(private http:HttpClient) { }
 
